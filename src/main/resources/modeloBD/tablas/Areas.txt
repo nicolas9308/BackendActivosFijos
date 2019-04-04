@@ -1,0 +1,13 @@
+-- -----------------------------------------------------
+-- Table `areas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `areas` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Llave de la tabla',
+  `creado` DATE NOT NULL COMMENT 'Fecha de creación',
+  `creado_por` INT NOT NULL COMMENT 'ID del usuario de creación',
+  `actualizado` DATE NOT NULL COMMENT 'Fecha de ult. actualización',
+  `actualizado_por` INT NOT NULL COMMENT 'ID del usuario de ult. actualización',
+  `nombre` VARCHAR(60) NOT NULL COMMENT 'Nombre del area de la empresa',
+  `estado` VARCHAR(11) NOT NULL COMMENT 'Estado del registro',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))

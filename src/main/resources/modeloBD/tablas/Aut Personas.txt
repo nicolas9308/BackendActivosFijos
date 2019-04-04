@@ -1,0 +1,22 @@
+-- -----------------------------------------------------
+-- Table `aut_persona`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `aut_personas` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Llave de la tabla',
+  `creado` DATE NOT NULL COMMENT 'Fecha de creación',
+  `creado_por` INT NOT NULL COMMENT 'ID del usuario de creación',
+  `actualizado` DATE NOT NULL COMMENT 'Fecha de ult. actualización',
+  `actualizado_por` INT NOT NULL COMMENT 'ID del usuario de ult. actualización',
+  `usuario` VARCHAR(30) NOT NULL COMMENT 'Usuario de acceso para autenticacion en el front',
+  `clave` VARCHAR(20) NOT NULL COMMENT 'Clave de acceso para autenticacion en el front',
+  `estado` VARCHAR(11) NOT NULL COMMENT 'Estado del registro',
+  `persona_id` INT NOT NULL COMMENT 'Relacion con la tabla persona id para validar datos personales de la misma',
+  PRIMARY KEY (`id`, `persona_id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_aut_persona_persona1_idx` (`persona_id` ASC),
+  CONSTRAINT `fk_aut_persona_persona1`
+    FOREIGN KEY (`persona_id`)
+    REFERENCES `personas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)

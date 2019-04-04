@@ -1,0 +1,46 @@
+-- -----------------------------------------------------
+-- Table `tipo_activo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tipos_activos` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Llave de la tabla',
+  `creado` DATE NOT NULL COMMENT 'Fecha de creaci�n',
+  `creado_por` INT NOT NULL COMMENT 'ID del usuario de creaci�n',
+  `actualizado` DATE NOT NULL COMMENT 'Fecha de ult. actualizaci�n',
+  `actualizado_por` INT NOT NULL COMMENT 'ID del usuario de ult. actualizaci�n',
+  `nombre` VARCHAR(50) NOT NULL COMMENT 'Nombre del tipo de activo fijo',
+  `descripcion` VARCHAR(80) NULL COMMENT 'Descripcion del tipo de activo fijo',
+  `serial` VARCHAR(45) NOT NULL COMMENT 'N�mero serial del tipo de activo fijo',
+  `numero_inventario` VARCHAR(40) NOT NULL COMMENT 'N�mero de inventario del tipo de activo fijo',
+  `peso` DECIMAL(10,2) NULL COMMENT 'Peso del activo fijo',
+  `alto` DECIMAL(4,2) NULL COMMENT 'Altura del activo fijo',
+  `ancho` DECIMAL(4,2) NULL COMMENT 'Ancho del activo fijo',
+  `largo` DECIMAL(4,2) NULL COMMENT 'Largo del activo fijo',
+  `valor_compra` DECIMAL(17,5) NOT NULL COMMENT 'Valor del activo fijo',
+  `fecha_compra` DATE NOT NULL COMMENT 'Fecha cuando se obtuvo el activo fijo',
+  `fecha_baja` DATE NOT NULL COMMENT 'Fecha cuando se dio de baja el activo fijo',
+  `estado` VARCHAR(11) NOT NULL COMMENT 'Estado del activo fijo Baja, Reparacion, Disponible, Asignado',
+  `color` VARCHAR(10) NULL COMMENT 'Color del activo fijo',
+  `activo_fijo_id` INT NOT NULL COMMENT 'Relacion del tipo de activo fijo con el grupo de activo fijo',
+  `area_id` INT NOT NULL COMMENT 'Id del area donde esta ubicado este activo fijo',
+  `persona_id` INT NOT NULL COMMENT 'Id de la persona que hace uso de este activo fijo ',
+  PRIMARY KEY (`id`, `activo_fijo_id`, `area_id`, `persona_id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_tipo_activo_activo_fijo1_idx` (`activo_fijo_id` ASC),
+  INDEX `fk_tipo_activo_area1_idx` (`area_id` ASC),
+  INDEX `fk_tipo_activo_persona1_idx` (`persona_id` ASC),
+  CONSTRAINT `fk_tipo_activo_activo_fijo1`
+    FOREIGN KEY (`activo_fijo_id`)
+    REFERENCES `activos_fijos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tipo_activo_area1`
+    FOREIGN KEY (`area_id`)
+    REFERENCES `areas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tipo_activo_persona1`
+    FOREIGN KEY (`persona_id`)
+    REFERENCES `personas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+	

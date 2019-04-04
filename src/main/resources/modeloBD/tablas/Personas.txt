@@ -1,0 +1,17 @@
+-- -----------------------------------------------------
+-- Table `personas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `personas` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Llave de la tabla',
+  `creado` DATE NOT NULL COMMENT 'Fecha de creación',
+  `creado_por` INT NOT NULL COMMENT 'ID del usuario de creación',
+  `actualizado` DATE NOT NULL COMMENT 'Fecha de ult. actualización',
+  `actualizado_por` INT NOT NULL COMMENT 'ID del usuario de ult. actualización',
+  `nombre` VARCHAR(60) NOT NULL COMMENT 'Nombres de la persona',
+  `cargo` VARCHAR(45) NULL COMMENT 'Cargo de la persona',
+  `identificacion` VARCHAR(30) NOT NULL COMMENT 'Es el numero de identificacion de la persona',
+  `telefono` VARCHAR(45) NULL COMMENT 'Numero de telefono (cel/fijo)',
+  `estado` VARCHAR(11) NOT NULL COMMENT 'Estado del registro',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `identificacion_UNIQUE` (`identificacion` ASC))
