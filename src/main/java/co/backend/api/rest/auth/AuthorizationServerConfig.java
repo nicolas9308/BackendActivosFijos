@@ -58,7 +58,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				/* alcance de la app */
 				.scopes("read", "write").authorizedGrantTypes("password", "refesh_token")
 				/* configuramos el tiempo de caducidad del token */
-				.accessTokenValiditySeconds(3600).refreshTokenValiditySeconds(3600);
+				.accessTokenValiditySeconds(600).refreshTokenValiditySeconds(600);
 	}
 
 	/* Se encarga el proceso de autenticacion principalmente genera token */

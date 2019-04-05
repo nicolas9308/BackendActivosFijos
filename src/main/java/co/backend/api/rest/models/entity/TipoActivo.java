@@ -68,7 +68,7 @@ public class TipoActivo implements Serializable{
 	
 	@Column(name="numero_inventario")
 	@NotNull(message = "No puede ser nula")
-	@Size(min = 4, max = 40, message = " El tamaño tiene que estar entre 4 y 40 caracteres")
+	@Size(min = 3, max = 40, message = " El tamaño tiene que estar entre 3 y 40 caracteres")
 	private String numeroInventario;
 	
 	@Column
