@@ -26,8 +26,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Tabla entidad para autenticacion de personas, en carpeta resources encontraremos el crud
- * junto con documetacion de cada campo
+ * Tabla entidad para autenticación de personas, en carpeta resources encontraremos el crud
+ * junto con documetación de cada campo
  * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1

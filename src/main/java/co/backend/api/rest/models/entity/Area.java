@@ -15,8 +15,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * Tabla entidad para areas, en carpeta resources encontraremos el crud
- * junto con documetacion de cada campo
+ * Tabla entidad para áreas, en carpeta resources encontraremos el crud
+ * junto con documetación de cada campo
  * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1

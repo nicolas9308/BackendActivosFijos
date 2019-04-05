@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,8 +28,8 @@ import co.backend.api.rest.models.entity.TipoActivo;
 import co.backend.api.rest.models.service.IActivoFijoService;
 
 /**
- * clase java de servicios RESTful para tabla de activos fijos<br>
- * Se elimina restriccion cors para poder realizar conexion con servidor de angular
+ * Clase java de servicios RESTful para tabla de activos fijos<br>
+ * Se elimina restricción cors para poder realizar conexion con servidor de angular
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1
  *
@@ -46,7 +47,7 @@ public class ActivoFijoRestController {
 	/**
 	 * Metodo de obtencion de todos los Tipos de activos fijos
 	 * 
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mensaje  de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 */
 	@GetMapping("/activosFijos")
@@ -79,15 +80,16 @@ public class ActivoFijoRestController {
 	}
 
 	/**
-	 * Metodo para filtrar los tipos de activos por un id, una fecha de compra y el
+	 * Método  para filtrar los tipos de activos por un id, una fecha de compra y el
 	 * número serial.
 	 * 
-	 * @param tipoActivo objeto entitidad que contiene fecha, id y serial para
-	 *                   realizar busqueda
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @param tipoActivo objeto entidad  que contiene fecha, id y serial para
+	 *                   realizar búsqueda
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception 
 	 */
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/activosFijosFiltro")
 	public ResponseEntity<?> filtroActivosFijos(@RequestBody TipoActivo tipoActivo) throws Exception {
 
@@ -138,13 +140,14 @@ public class ActivoFijoRestController {
 	}
 
 	/**
-	 * Metodo para eliminar un tipo de activo fijo atravez del id
+	 * Método para eliminar un tipo de activo fijo a través del id
 	 * 
 	 * @param id del activo del cual realizaremos el borrado
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
-	 *         o de erro y nuestro resultado en dado caso que se obtenga
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
+	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception 
 	 */
+	@Secured({"ROLE_ADMIN"})
 	@DeleteMapping("/activosFijos/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 
@@ -180,18 +183,19 @@ public class ActivoFijoRestController {
 	}
 
 	/**
-	 * Metodo para actualizar un tipo de activo fijo atravez de un id
+	 * Método para actualizar un tipo de activo fijo a través de un id
 	 * 
-	 * @param activoFijo objeto entitidad con las caracteristicas que vamos a
+	 * @param activoFijo objeto entidad con las características que vamos a
 	 *                   actualizar
-	 * @param result     resultado de la validacion de parametros requeridos del
+	 * @param result     resultado de la validación de parámetros requeridos del
 	 *                   objeto entidad activo fijo
-	 * @param id         con el cual realizaremos la busqueda del tipo de activo que
+	 * @param id         con el cual realizaremos la búsqueda del tipo de activo que
 	 *                   vamos a actualizar
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mesanje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception 
 	 */
+	@Secured({"ROLE_ADMIN"})
 	@PutMapping("/activosFijos/{id}")
 	public ResponseEntity<?> update(@Validated @RequestBody ActivoFijo activoFijo, BindingResult result,
 			@PathVariable Long id) throws Exception {
@@ -247,16 +251,17 @@ public class ActivoFijoRestController {
 	}
 
 	/**
-	 * Metodo de creación de un tipo de activo fijo
+	 * Método de creación de un tipo de activo fijo
 	 * 
 	 * @param activoFijo objeto entidad del cual tomaremos los datos requeridos para
-	 *                   hacer la insercion
-	 * @param result     resultado de la validacion de parametros requeridos del
+	 *                   hacer la inserción
+	 * @param result     resultado de la validación de parámetros requeridos del
 	 *                   objeto entidad activo fijo
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mesanje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception 
 	 */
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/activosFijos")
 	public ResponseEntity<?> create(@Validated @RequestBody ActivoFijo activoFijo, BindingResult result) throws Exception {
 
