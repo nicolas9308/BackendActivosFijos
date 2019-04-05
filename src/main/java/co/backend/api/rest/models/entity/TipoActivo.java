@@ -15,11 +15,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Tabla entidad para tipos activos fijos, en carpeta resources encontraremos el crud
+ * junto con documetacion de cada campo
+ * 
+ * @author Brayan Nicolas Peña Quintana
+ * @version 0.0.1
+ */
 @Entity
 @Table(name = "tipos_activos")
 public class TipoActivo implements Serializable{
@@ -32,24 +39,22 @@ public class TipoActivo implements Serializable{
 
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotEmpty(message = "La fecha no puede estar vacia")
 	private Date creado;
 
 	@Column(name = "creado_por")
-	@NotEmpty(message = "El usuario es necesario para llevar un campo de control")
+	@NotNull(message = "El usuario es necesario para llevar un campo de control")
 	private String creadoPor;
 
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotEmpty(message = "La fecha no puede estar vacia")
 	private Date actualizado;
 
 	@Column(name = "actualizado_por")
-	@NotEmpty(message = "El usuario es necesario para llevar un campo de control")
+	@NotNull(message = "El usuario es necesario para llevar un campo de control")
 	private String actualizadoPor;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser vacio")
 	@Size(min = 4, max = 50, message = " El tamaño tiene que estar entre 4 y 50 caracteres")
 	private String nombre;
 
@@ -57,12 +62,12 @@ public class TipoActivo implements Serializable{
 	private String descripcion;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	@Size(min = 4, max = 45, message = " El tamaño tiene que estar entre 4 y 45 caracteres")
 	private String serial;
 	
 	@Column(name="numero_inventario")
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	@Size(min = 4, max = 40, message = " El tamaño tiene que estar entre 4 y 40 caracteres")
 	private String numeroInventario;
 	
@@ -79,12 +84,12 @@ public class TipoActivo implements Serializable{
 	private BigDecimal largo;
 	
 	@Column(name="valor_compra")
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	private BigDecimal valorCompra;
 	
 	@Column(name="fecha_compra")
 	@Temporal(TemporalType.DATE)
-	@NotEmpty(message = "La fecha no puede estar vacia")
+	@NotNull(message = "La fecha no puede estar vacia")
 	private Date fechaCompra;
 	
 	@Column(name="fecha_baja")
@@ -92,7 +97,7 @@ public class TipoActivo implements Serializable{
 	private Date fechaBaja;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	@Size(min = 4, max = 11, message = " El tamaño tiene que estar entre 4 y 11 caracteres")
 	private String estado;
 	

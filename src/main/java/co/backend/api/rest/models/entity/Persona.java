@@ -11,9 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Tabla entidad para personas, en carpeta resources encontraremos el crud
+ * junto con documetacion de cada campo
+ * 
+ * @author Brayan Nicolas Peña Quintana
+ * @version 0.0.1
+ */
 @Entity
 @Table(name = "personas")
 public class Persona implements Serializable {
@@ -25,25 +32,23 @@ public class Persona implements Serializable {
 	private Long id;
 
 	@Column
-	@Temporal(TemporalType.DATE)
-	@NotEmpty(message = "La fecha no puede estar vacia")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date creado;
 
 	@Column(name = "creado_por")
-	@NotEmpty(message = "El usuario es necesario para llevar un campo de control")
+	@NotNull(message = "El usuario es necesario para llevar un campo de control")
 	private String creadoPor;
 
 	@Column
-	@Temporal(TemporalType.DATE)
-	@NotEmpty(message = "La fecha no puede estar vacia")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date actualizado;
 
 	@Column(name = "actualizado_por")
-	@NotEmpty(message = "El usuario es necesario para llevar un campo de control")
+	@NotNull(message = "El usuario es necesario para llevar un campo de control")
 	private String actualizadoPor;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	@Size(min = 4, max = 60, message = " El tamaño tiene que estar entre 4 y 60 caracteres")
 	private String nombre;
 
@@ -52,7 +57,7 @@ public class Persona implements Serializable {
 	private String cargo;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	@Size(min = 4, max = 30, message = " El tamaño tiene que estar entre 4 y 30 caracteres")
 	private String identificacion;
 	
@@ -61,12 +66,12 @@ public class Persona implements Serializable {
 	private String telefono;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	@Size(min = 4, max = 30, message = " El tamaño tiene que estar entre 4 y 30 caracteres")
 	private String email;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser nula")
 	@Size(min = 4, max = 11, message = " El tamaño tiene que estar entre 4 y 11 caracteres")
 	private String estado;
 

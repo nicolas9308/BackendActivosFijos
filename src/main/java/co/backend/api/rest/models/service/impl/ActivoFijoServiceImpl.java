@@ -4,17 +4,26 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import co.backend.api.rest.models.dao.IActivoFijoDao;
 import co.backend.api.rest.models.entity.ActivoFijo;
 import co.backend.api.rest.models.entity.TipoActivo;
 import co.backend.api.rest.models.service.IActivoFijoService;
 
+/**
+ * implementacion de interfaz Service de los metodos necesarios para activos fijos
+ * 
+ * @author Brayan Nicolas Peña Quintana
+ * @version 0.0.1
+ */
 @Service
 public class ActivoFijoServiceImpl implements IActivoFijoService {
+
+	protected Logger logger = LogManager.getLogger(ActivoFijoServiceImpl.class);
 
 	@Autowired
 	private IActivoFijoDao activoFijoDao;
@@ -24,10 +33,11 @@ public class ActivoFijoServiceImpl implements IActivoFijoService {
 	public List<ActivoFijo> findAll() {
 		return (List<ActivoFijo>) activoFijoDao.findAll();
 	}
-
+	
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<ActivoFijo> findByFiltro(Long tipoActivoFijo, Date fechaCompra, String serial) {
+		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		Iterable<ActivoFijo> activoFijo = null;
 
@@ -68,6 +78,7 @@ public class ActivoFijoServiceImpl implements IActivoFijoService {
 			}).filter(act -> act != null).collect(Collectors.toList());
 		}
 
+		logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return activoFijo;
 	}
 
@@ -79,6 +90,12 @@ public class ActivoFijoServiceImpl implements IActivoFijoService {
 	@Override
 	public ActivoFijo findById(Long id) {
 		return activoFijoDao.findById(id).orElse(null);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long id) {
+		activoFijoDao.deleteById(id);
 	}
 
 }

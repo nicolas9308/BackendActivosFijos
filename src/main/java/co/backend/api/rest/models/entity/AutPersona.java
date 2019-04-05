@@ -20,11 +20,18 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Tabla entidad para autenticacion de personas, en carpeta resources encontraremos el crud
+ * junto con documetacion de cada campo
+ * 
+ * @author Brayan Nicolas Peña Quintana
+ * @version 0.0.1
+ */
 @Entity
 @Table(name = "aut_personas")
 public class AutPersona implements Serializable {
@@ -36,33 +43,31 @@ public class AutPersona implements Serializable {
 	private Long id;
 
 	@Column
-	@Temporal(TemporalType.DATE)
-	@NotEmpty(message = "La fecha no puede estar vacia")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date creado;
 
 	@Column(name = "creado_por")
-	@NotEmpty(message = "El usuario es necesario para llevar un campo de control")
+	@NotNull(message = "El usuario es necesario para llevar un campo de control")
 	private String creadoPor;
 
 	@Column
-	@Temporal(TemporalType.DATE)
-	@NotEmpty(message = "La fecha no puede estar vacia")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date actualizado;
 
 	@Column(name = "actualizado_por")
-	@NotEmpty(message = "El usuario es necesario para llevar un campo de control")
+	@NotNull(message = "El usuario es necesario para llevar un campo de control")
 	private String actualizadoPor;
 
 	@Column(unique=true)
-	@NotEmpty(message = "Debes ingresar un usuario")
+	@NotNull(message = "Debes ingresar un usuario")
 	private String usuario;
 	
 	@Column
-	@NotEmpty(message = "Debes ingresar una clave")
+	@NotNull(message = "Debes ingresar una clave")
 	private String clave;
 	
 	@Column
-	@NotEmpty(message = "No puede ser vacio")
+	@NotNull(message = "No puede ser vacio")
 	@Size(min = 4, max = 11, message = " El tamaño tiene que estar entre 4 y 11 caracteres")
 	private String estado;
 	
