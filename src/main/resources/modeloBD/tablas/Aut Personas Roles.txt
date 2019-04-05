@@ -1,0 +1,18 @@
+-- -----------------------------------------------------
+-- Table `aut_personas_roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `aut_personas_roles` (
+  `aut_persona_id` INT NOT NULL,
+  `rol_id` INT NOT NULL,
+  PRIMARY KEY (`aut_persona_id`, `rol_id`),
+  INDEX `fk_aut_persona_rol_rol1_idx` (`rol_id` ASC),
+  CONSTRAINT `fk_aut_persona_rol_aut_persona1`
+    FOREIGN KEY (`aut_persona_id`)
+    REFERENCES `aut_personas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_aut_persona_rol_rol1`
+    FOREIGN KEY (`rol_id`)
+    REFERENCES `roles` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)

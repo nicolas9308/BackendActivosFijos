@@ -1,0 +1,13 @@
+-- -----------------------------------------------------
+-- Table `ciudades`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`ciudades` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `creado` DATE NOT NULL,
+  `creado_por` INT NOT NULL,
+  `actualizado` DATE NOT NULL,
+  `actualizado_por` INT NOT NULL,
+  `estado` VARCHAR(11) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))

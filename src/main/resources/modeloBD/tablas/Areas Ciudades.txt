@@ -1,0 +1,18 @@
+-- -----------------------------------------------------
+-- Table `areas_ciudades`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`areas_ciudades` (
+  `ciudades_id` INT NOT NULL,
+  `areas_id` INT NOT NULL,
+  PRIMARY KEY (`ciudades_id`, `areas_id`),
+  INDEX `fk_areas_ciudades_areas1_idx` (`areas_id` ASC),
+  CONSTRAINT `fk_areas_ciudades_ciudades1`
+    FOREIGN KEY (`ciudades_id`)
+    REFERENCES `ciudades` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_areas_ciudades_areas1`
+    FOREIGN KEY (`areas_id`)
+    REFERENCES `areas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
