@@ -1,0 +1,14 @@
+-- -----------------------------------------------------
+-- Table `roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Llave de la tabla'
+  `creado` DATE NOT NULL COMMENT 'Fecha de creación',
+  `creado_por` INT NOT NULL	COMMENT 'ID del usuario de creación',
+  `actualizado` DATE NOT NULL COMMENT 'Fecha de ult. actualización'
+  `actualizado_por` INT NOT NULL COMMENT 'ID del usuario de ult. actualización',
+  `nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del rol',
+  `descripcion` VARCHAR(70) NULL COMMENT 'Descripcion del rol',
+  `estado` VARCHAR(11) NOT NULL COMMENT 'Estado del registro',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))

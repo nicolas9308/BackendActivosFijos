@@ -1,0 +1,14 @@
+-- -----------------------------------------------------
+-- Table `activos_fijos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `activos_fijos` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Llave de la tabla',
+  `creado` DATE NOT NULL COMMENT 'Fecha de creaci�n',
+  `creado_por` INT NOT NULL COMMENT 'ID del usuario de creaci�n',
+  `actualizado` DATE NOT NULL COMMENT 'Fecha de ult. actualizaci�n',
+  `actualizado_por` INT NOT NULL COMMENT 'ID del usuario de ult. actualizaci�n',
+  `nombre` VARCHAR(60) NOT NULL COMMENT 'Nombre del activo fijo',
+  `descripcion` VARCHAR(80) COMMENT 'Descripcion del activo fijo',
+  `estado` VARCHAR(11) NOT NULL COMMENT 'Estado del registro',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
