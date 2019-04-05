@@ -9,7 +9,7 @@ import co.backend.api.rest.models.entity.Persona;
 import co.backend.api.rest.models.service.IPersonaService;
 
 /**
- * implementacion de interfaz Service de los metodos necesarios para personas
+ * Implementación de interfaz Service de los métodos necesarios para personas
  * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1

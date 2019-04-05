@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,8 +27,8 @@ import co.backend.api.rest.models.entity.TipoActivo;
 import co.backend.api.rest.models.service.ITipoActivoService;
 
 /**
- * clase java de servicios RESTful para tabla de tipos de activos fijos<br>
- * Se elimina restriccion cors para poder realizar conexion con servidor de angular
+ * Clase java de servicios RESTful para tabla de tipos de activos fijos<br>
+ * Se elimina restricción cors para poder realizar conexión con servidor de angular
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1
  *
@@ -43,13 +44,14 @@ public class TipoActivoRestController {
 	protected Logger logger = LogManager.getLogger(TipoActivoRestController.class);
 
 	/**
-	 * Metodo de borrado para activos fijos
+	 * Método de borrado para activos fijos
 	 * 
 	 * @param id id del tipo de activos fijos
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception
 	 */
+	@Secured({"ROLE_ADMIN"})
 	@DeleteMapping("/tiposActivosFijos/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 		Map<String, Object> response = new HashMap<>();
@@ -84,17 +86,18 @@ public class TipoActivoRestController {
 	}
 
 	/**
-	 * Metodo de actualizacion para tipos de activos, actualizamos datos de
+	 * Método de actualización para tipos de activos, actualizamos datos de
 	 * auditoria estado, fecha de baja y serial
 	 * 
 	 * @param tipoActivo objeto entidad para obtener atributos fecha de baja, estado
 	 *                   y serial
 	 * @param result     objeto result para validar campos obligatorios
 	 * @param id         del tipo de activo que vamos a actualizar
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception
 	 */
+	@Secured({"ROLE_ADMIN"})
 	@PutMapping("/tiposActivosFijos/{id}")
 	public ResponseEntity<?> update(@Validated @RequestBody TipoActivo tipoActivo, BindingResult result,
 			@PathVariable Long id) throws Exception {
@@ -160,14 +163,15 @@ public class TipoActivoRestController {
 	}
 
 	/**
-	 * Metodo de creacion para tipo de activo fijo
+	 * Método de creación para tipo de activo fijo
 	 * 
 	 * @param tipoActivo objeto entidad para obtener atributos
 	 * @param result     objeto result para validar campos obligatorios
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception 
 	 */
+	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/tiposActivosFijos")
 	public ResponseEntity<?> create(@Validated @RequestBody TipoActivo tipoActivo, BindingResult result) throws Exception {
 

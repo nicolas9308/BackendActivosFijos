@@ -15,7 +15,7 @@ import co.backend.api.rest.models.entity.TipoActivo;
 import co.backend.api.rest.models.service.IActivoFijoService;
 
 /**
- * implementacion de interfaz Service de los metodos necesarios para activos fijos
+ * Implementación de interfaz Service de los métodos necesarios para activos fijos
  * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1

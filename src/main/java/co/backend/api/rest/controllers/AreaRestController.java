@@ -18,8 +18,8 @@ import co.backend.api.rest.models.entity.Area;
 import co.backend.api.rest.models.service.IAreaService;
 
 /**
- * clase java de servicios RESTful para tabla de areas<br>
- * Se elimina restriccion cors para poder realizar conexion con servidor de angular
+ * Clase java de servicios RESTful para tabla de áreas<br>
+ * Se elimina restricción cors para poder realizar conexion con servidor de angular
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1
  *
@@ -35,9 +35,9 @@ public class AreaRestController {
 	protected Logger logger = LogManager.getLogger(AreaRestController.class);
 
 	/**
-	 * Metodo de obtencion de todas las areas
+	 * Método de obtencion de todas las áreas
 	 * 
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception 
 	 */

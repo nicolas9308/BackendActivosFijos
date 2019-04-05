@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Tabla entidad para activos fijos, en carpeta resources encontraremos el crud
- * junto con documetacion de cada campo
+ * junto con documetación de cada campo
  * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1

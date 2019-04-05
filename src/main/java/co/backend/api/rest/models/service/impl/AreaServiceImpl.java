@@ -10,7 +10,7 @@ import co.backend.api.rest.models.entity.Area;
 import co.backend.api.rest.models.service.IAreaService;
 
 /**
- * implementacion de interfaz Service de los metodos necesarios para areas
+ * Implementación de interfaz Service de los métodos necesarios para áreas
  * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1

@@ -1,0 +1,7 @@
+co.backend.api.rest
+co.backend.api.rest.auth
+co.backend.api.rest.controllers
+co.backend.api.rest.models.dao
+co.backend.api.rest.models.entity
+co.backend.api.rest.models.service
+co.backend.api.rest.models.service.impl
