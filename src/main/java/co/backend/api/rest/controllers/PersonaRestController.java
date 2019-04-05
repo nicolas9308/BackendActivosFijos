@@ -18,8 +18,8 @@ import co.backend.api.rest.models.entity.Persona;
 import co.backend.api.rest.models.service.IPersonaService;
 
 /**
- * clase java de servicios RESTful para tabla de personas<br>
- * Se elimina restriccion cors para poder realizar conexion con servidor de angular
+ * Clase java de servicios RESTful para tabla de personas<br>
+ * Se elimina restricción cors para poder realizar conexión con servidor de angular
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1
  *
@@ -35,9 +35,9 @@ public class PersonaRestController {
 	protected Logger logger = LogManager.getLogger(PersonaRestController.class);
 
 	/**
-	 * Metodo de obtencion de todas las personas
+	 * Método de obtencién de todas las personas
 	 * 
-	 * @return ResponseEntity donde nos mapea un mesaje de control bien sea de exito
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception 
 	 */

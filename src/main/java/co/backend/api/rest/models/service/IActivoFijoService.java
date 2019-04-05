@@ -5,7 +5,7 @@ import java.util.List;
 import co.backend.api.rest.models.entity.ActivoFijo;
 
 /**
- * Interfaz Service para matriculacion de los metodos necesarios para activos fijos
+ * Interfaz Service para matriculación de los metodos necesarios para activos fijos
  * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1

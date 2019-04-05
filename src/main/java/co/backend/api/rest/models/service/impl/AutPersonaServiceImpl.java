@@ -17,6 +17,12 @@ import co.backend.api.rest.models.dao.IAutPersonaDao;
 import co.backend.api.rest.models.entity.AutPersona;
 import co.backend.api.rest.models.service.IAutPersonaService;
 
+/**
+ * Implementación de interfaz Service de los métodos necesarios para autenticación de personas (AutPersonas)
+ * 
+ * @author Brayan Nicolas Peña Quintana
+ * @version 0.0.1
+ */
 @Service
 public class AutPersonaServiceImpl implements IAutPersonaService{
 
