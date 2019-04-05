@@ -28,7 +28,9 @@ import co.backend.api.rest.models.service.ITipoActivoService;
 
 /**
  * Clase java de servicios RESTful para tabla de tipos de activos fijos<br>
- * Se elimina restricción cors para poder realizar conexión con servidor de angular
+ * Se elimina restricción cors para poder realizar conexión con servidor de
+ * angular
+ * 
  * @author Brayan Nicolas Peña Quintana
  * @version 0.0.1
  *
@@ -47,11 +49,11 @@ public class TipoActivoRestController {
 	 * Método de borrado para activos fijos
 	 * 
 	 * @param id id del tipo de activos fijos
-	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
-	 *         o de error y nuestro resultado en dado caso que se obtenga
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de
+	 *         éxito o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception
 	 */
-	@Secured({"ROLE_ADMIN"})
+	@Secured({ "ROLE_ADMIN" })
 	@DeleteMapping("/tiposActivosFijos/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 		Map<String, Object> response = new HashMap<>();
@@ -126,6 +128,13 @@ public class TipoActivoRestController {
 				logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 			}
+			
+			if(tipoActivoActual.getFechaCompra().compareTo(tipoActivo.getFechaBaja()) == 1) {
+				response.put("Mensaje", "Error: no se pudo editar, el activo con tipo Id: "
+						.concat(id.toString().concat(" la fecha de baja no puede ser inferior o igual a la fecha de compra.")));
+				logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+			}
 
 			tipoActivoActual.setCreado(tipoActivoActual.getCreado());
 			tipoActivoActual.setCreadoPor(tipoActivoActual.getCreadoPor());
@@ -167,13 +176,14 @@ public class TipoActivoRestController {
 	 * 
 	 * @param tipoActivo objeto entidad para obtener atributos
 	 * @param result     objeto result para validar campos obligatorios
-	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
-	 *         o de error y nuestro resultado en dado caso que se obtenga
-	 * @throws Exception 
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de
+	 *         éxito o de error y nuestro resultado en dado caso que se obtenga
+	 * @throws Exception
 	 */
-	@Secured({"ROLE_USER","ROLE_ADMIN"})
+	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@PostMapping("/tiposActivosFijos")
-	public ResponseEntity<?> create(@Validated @RequestBody TipoActivo tipoActivo, BindingResult result) throws Exception {
+	public ResponseEntity<?> create(@Validated @RequestBody TipoActivo tipoActivo, BindingResult result)
+			throws Exception {
 
 		Map<String, Object> response = new HashMap<>();
 		TipoActivo tipoActivoNew = null;
