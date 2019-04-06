@@ -45,7 +45,7 @@ public class PersonaRestController {
 	public ResponseEntity<?> getAll() throws Exception {
 		Map<String, Object> response = new HashMap<>();
 		List<Persona> listaPersonas = null;
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		try {			
 			listaPersonas = personaService.findAll();
@@ -59,12 +59,12 @@ public class PersonaRestController {
 
 		if (listaPersonas.size() == 0) {
 			response.put("Mensaje", "No se encontraron personas registradas");
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} else {
 			response.put("mensaje", "Busqueda éxitosa");
 			response.put("Lista_Personas", listaPersonas);
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		}
 	}

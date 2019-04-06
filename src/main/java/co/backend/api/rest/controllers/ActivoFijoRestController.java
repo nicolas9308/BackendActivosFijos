@@ -53,7 +53,7 @@ public class ActivoFijoRestController {
 	@GetMapping("/activosFijos")
 	public ResponseEntity<?> getAll() {
 
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		Map<String, Object> response = new HashMap<>();
 		List<ActivoFijo> listaActivos = null;
@@ -69,12 +69,12 @@ public class ActivoFijoRestController {
 
 		if (listaActivos.size() == 0) {
 			response.put("Mensaje", "No se encontraron activos");
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} else {
 			response.put("mensaje", "Busqueda éxitosa");
 			response.put("Lista_Activos", listaActivos);
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		}
 	}
@@ -93,7 +93,7 @@ public class ActivoFijoRestController {
 	@PostMapping("/activosFijosFiltro")
 	public ResponseEntity<?> filtroActivosFijos(@RequestBody TipoActivo tipoActivo) throws Exception {
 
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		Map<String, Object> response = new HashMap<>();
 		List<ActivoFijo> activosFijos = null;
@@ -129,12 +129,12 @@ public class ActivoFijoRestController {
 
 		if (activosFijos.size() == 0) {
 			response.put("Mensaje", "No se encontraron activos");
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} else {
 			response.put("mensaje", "Busqueda éxitosa");
 			response.put("Tipo_Activo_Fijo", activosFijos);
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		}
 	}
@@ -151,7 +151,7 @@ public class ActivoFijoRestController {
 	@DeleteMapping("/activosFijos/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		Map<String, Object> response = new HashMap<>();
 
@@ -177,7 +177,7 @@ public class ActivoFijoRestController {
 		}
 
 		response.put("Mensaje", "El activo ha sido eliminado con éxito");
-		logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 
 	}
@@ -205,7 +205,7 @@ public class ActivoFijoRestController {
 
 		Map<String, Object> response = new HashMap<>();
 
-		logger.fatal("Entra a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entra a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		if (result.hasErrors()) {
 
@@ -245,7 +245,7 @@ public class ActivoFijoRestController {
 
 		response.put("Mensaje", "El activo ha sido actualizado con éxito");
 		response.put("Tipo_Activo_Fijo", activoFijoUpdated);
-		logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 
 	}
@@ -268,7 +268,7 @@ public class ActivoFijoRestController {
 		Map<String, Object> response = new HashMap<>();
 		ActivoFijo activoFijoNew = null;
 
-		logger.fatal("Entra a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entra a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		if (result.hasErrors()) {
 
@@ -295,7 +295,7 @@ public class ActivoFijoRestController {
 
 		response.put("Mensaje", "El activo ha sido creado con éxito");
 		response.put("Tipo_Activo_Fijo", activoFijoNew);
-		logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 

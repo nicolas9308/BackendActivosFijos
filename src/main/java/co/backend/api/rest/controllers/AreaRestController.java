@@ -46,6 +46,8 @@ public class AreaRestController {
 		Map<String, Object> response = new HashMap<>();
 		
 		List<Area> listaAreas = null;
+
+		logger.info("Entra a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		
 		try {			
 			listaAreas = areaService.findAll();
@@ -61,12 +63,12 @@ public class AreaRestController {
 
 		if (listaAreas.size() == 0) {
 			response.put("Mensaje", "No se encontraron areas registradas");
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} else {
 			response.put("mensaje", "Busqueda éxitosa");
 			response.put("Lista_Areas", listaAreas);
-			logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		}
 	}

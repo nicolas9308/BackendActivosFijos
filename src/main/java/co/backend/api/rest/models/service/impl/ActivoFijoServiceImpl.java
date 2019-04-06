@@ -37,7 +37,7 @@ public class ActivoFijoServiceImpl implements IActivoFijoService {
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<ActivoFijo> findByFiltro(Long tipoActivoFijo, Date fechaCompra, String serial) {
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		Iterable<ActivoFijo> activoFijo = null;
 
@@ -78,7 +78,7 @@ public class ActivoFijoServiceImpl implements IActivoFijoService {
 			}).filter(act -> act != null).collect(Collectors.toList());
 		}
 
-		logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return activoFijo;
 	}
 

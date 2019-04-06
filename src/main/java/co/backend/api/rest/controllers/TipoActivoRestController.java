@@ -58,7 +58,7 @@ public class TipoActivoRestController {
 	public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 		Map<String, Object> response = new HashMap<>();
 
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		try {
 
@@ -82,7 +82,7 @@ public class TipoActivoRestController {
 		}
 
 		response.put("Mensaje", "El activo ha sido eliminado con éxito");
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 
 	}
@@ -109,7 +109,7 @@ public class TipoActivoRestController {
 
 		Map<String, Object> response = new HashMap<>();
 
-		logger.fatal("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try {
 			if (result.hasErrors()) {
 
@@ -167,7 +167,7 @@ public class TipoActivoRestController {
 
 		response.put("Mensaje", "El activo ha sido actualizado con éxito");
 		response.put("Activo_Fijo", tipoActivoUpdated);
-		logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
@@ -188,7 +188,7 @@ public class TipoActivoRestController {
 		Map<String, Object> response = new HashMap<>();
 		TipoActivo tipoActivoNew = null;
 
-		logger.fatal("Entra a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Entra a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 
 		if (result.hasErrors()) {
 
@@ -215,7 +215,7 @@ public class TipoActivoRestController {
 
 		response.put("Mensaje", "El activo ha sido creado con éxito");
 		response.put("Activo_Fijo", tipoActivoNew);
-		logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+		logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
