@@ -95,11 +95,11 @@ public class TipoActivoRestController {
 	 *                   y serial
 	 * @param result     objeto result para validar campos obligatorios
 	 * @param id         del tipo de activo que vamos a actualizar
-	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
-	 *         o de error y nuestro resultado en dado caso que se obtenga
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de
+	 *         éxito o de error y nuestro resultado en dado caso que se obtenga
 	 * @throws Exception
 	 */
-	@Secured({"ROLE_ADMIN"})
+	@Secured({ "ROLE_ADMIN" })
 	@PutMapping("/tiposActivosFijos/{id}")
 	public ResponseEntity<?> update(@Validated @RequestBody TipoActivo tipoActivo, BindingResult result,
 			@PathVariable Long id) throws Exception {
@@ -128,12 +128,13 @@ public class TipoActivoRestController {
 				logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 			}
-			
-			if(tipoActivoActual.getFechaCompra().compareTo(tipoActivo.getFechaBaja()) == 1) {
-				response.put("Mensaje", "Error: no se pudo editar, el activo con tipo Id: "
-						.concat(id.toString().concat(" la fecha de baja no puede ser inferior o igual a la fecha de compra.")));
-				logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
-				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+			if (tipoActivoActual.getFechaBaja() != null) {
+				if (tipoActivoActual.getFechaCompra().compareTo(tipoActivo.getFechaBaja()) == 1) {
+					response.put("Mensaje", "Error: no se pudo editar, el activo con tipo Id: ".concat(id.toString()
+							.concat(" la fecha de baja no puede ser inferior o igual a la fecha de compra.")));
+					logger.fatal("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+					return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+				}
 			}
 
 			tipoActivoActual.setCreado(tipoActivoActual.getCreado());

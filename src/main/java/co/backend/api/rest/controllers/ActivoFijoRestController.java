@@ -79,6 +79,36 @@ public class ActivoFijoRestController {
 		}
 	}
 
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
+	@GetMapping("/activosFijos/{id}")
+	public ResponseEntity<?> getFinById(@PathVariable Long id) {
+
+		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+
+		Map<String, Object> response = new HashMap<>();
+		ActivoFijo listaActivos = null;
+		try {
+			listaActivos = activoFijoService.findById(id);
+		} catch (Exception e) {
+			response.put("Mensaje", "Error al Buscar el activo en la base de datos");
+			response.put("Error", e.getMessage().concat(":").concat(e.getMessage()));
+			logger.error("DataAccessException (" + Thread.currentThread().getStackTrace()[1].getMethodName() + ") :"
+					+ e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		if (listaActivos == null) {
+			response.put("Mensaje", "No se encontraron activos");
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		} else {
+			response.put("mensaje", "Busqueda éxitosa");
+			response.put("Lista_Activos", listaActivos);
+			logger.info("Sale de: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+		}
+	}
+	
 	/**
 	 * Método  para filtrar los tipos de activos por un id, una fecha de compra y el
 	 * número serial.

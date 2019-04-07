@@ -28,7 +28,7 @@ public class InfoAdicionalToken implements TokenEnhancer {
 
 	@Autowired
 	private IAutPersonaService autPersonaService;
-
+	
 	@Override
 	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
 
@@ -38,8 +38,11 @@ public class InfoAdicionalToken implements TokenEnhancer {
 
 		try {
 			autPersona = autPersonaService.findByUsuario(authentication.getName());
-			info.put("idPersona", autPersona.getId());
-			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
+			if (autPersona != null) {
+				info.put("idPersona", autPersona.getId());
+				info.put("usuario", autPersona.getUsuario());
+				((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
