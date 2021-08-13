@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import co.backend.api.rest.models.entity.Area;
 import co.backend.api.rest.models.service.IAreaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Clase java de servicios RESTful para tabla de áreas<br>
@@ -27,6 +29,7 @@ import co.backend.api.rest.models.service.IAreaService;
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")
+@Api(value = "Clase con todos los servicios necesarios para la tabla de areas")
 public class AreaRestController {
 
 	@Autowired
@@ -42,6 +45,7 @@ public class AreaRestController {
 	 * @throws Exception 
 	 */
 	@GetMapping("/areas")
+	@ApiOperation(value = "Método de obtencion de todas las áreas")
 	public ResponseEntity<?> getAll() throws Exception {
 		Map<String, Object> response = new HashMap<>();
 		

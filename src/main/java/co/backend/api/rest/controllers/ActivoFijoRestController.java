@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 import co.backend.api.rest.models.entity.ActivoFijo;
 import co.backend.api.rest.models.entity.TipoActivo;
 import co.backend.api.rest.models.service.IActivoFijoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Clase java de servicios RESTful para tabla de activos fijos<br>
@@ -37,6 +39,7 @@ import co.backend.api.rest.models.service.IActivoFijoService;
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")
+@Api(value = "Clase con todos los servicios necesarios para la tabla de activos fijos")
 public class ActivoFijoRestController {
 
 	protected Logger logger = LogManager.getLogger(ActivoFijoRestController.class);
@@ -51,6 +54,7 @@ public class ActivoFijoRestController {
 	 *         o de error y nuestro resultado en dado caso que se obtenga
 	 */
 	@GetMapping("/activosFijos")
+	@ApiOperation(value = "Metodo de obtencion de todos los Tipos de activos fijos")
 	public ResponseEntity<?> getAll() {
 
 		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -79,8 +83,18 @@ public class ActivoFijoRestController {
 		}
 	}
 
+	/**
+	 * Método  para filtrar los tipos de activos por un id
+	 * 
+	 * @param id tipo de dato long, reflejado como el id del activo fijo 
+	 * 
+	 * @return ResponseEntity donde nos mapea un mensaje de control bien sea de éxito
+	 *         o de error y nuestro resultado en dado caso que se obtenga
+	 * @throws Exception 
+	 */
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@GetMapping("/activosFijos/{id}")
+	@ApiOperation(value = " Método  para filtrar los tipos de activos por un id")
 	public ResponseEntity<?> getFinById(@PathVariable Long id) {
 
 		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -121,6 +135,7 @@ public class ActivoFijoRestController {
 	 */
 	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/activosFijosFiltro")
+	@ApiOperation(value = "Método  para filtrar los tipos de activos por un id, una fecha de compra y el número serial.")
 	public ResponseEntity<?> filtroActivosFijos(@RequestBody TipoActivo tipoActivo) throws Exception {
 
 		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -179,6 +194,7 @@ public class ActivoFijoRestController {
 	 */
 	@Secured({"ROLE_ADMIN"})
 	@DeleteMapping("/activosFijos/{id}")
+	@ApiOperation(value = "Método para eliminar un tipo de activo fijo a través del id")
 	public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 
 		logger.info("Entro a: " + Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -227,6 +243,7 @@ public class ActivoFijoRestController {
 	 */
 	@Secured({"ROLE_ADMIN"})
 	@PutMapping("/activosFijos/{id}")
+	@ApiOperation(value = "Método para actualizar un tipo de activo fijo a través de un id")
 	public ResponseEntity<?> update(@Validated @RequestBody ActivoFijo activoFijo, BindingResult result,
 			@PathVariable Long id) throws Exception {
 
@@ -293,6 +310,7 @@ public class ActivoFijoRestController {
 	 */
 	@Secured({"ROLE_USER","ROLE_ADMIN"})
 	@PostMapping("/activosFijos")
+	@ApiOperation(value = "Método de creación de un tipo de activo fijo")
 	public ResponseEntity<?> create(@Validated @RequestBody ActivoFijo activoFijo, BindingResult result) throws Exception {
 
 		Map<String, Object> response = new HashMap<>();
