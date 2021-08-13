@@ -1,4 +1,4 @@
-package co.backend.api.rest.auth;
+package co.backend.api.rest.config;
 
 import java.util.Arrays;
 
@@ -16,6 +16,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+
+import co.backend.api.rest.auth.InfoAdicionalToken;
 
 /**
  * Clase de configuración del servidor para tiempos de vida del token y

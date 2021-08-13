@@ -1,4 +1,4 @@
-package co.backend.api.rest.auth;
+package co.backend.api.rest.config;
 
 import java.util.Arrays;
 
@@ -27,9 +27,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/areas", "/api/personas", "/api/activosFijos")
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/areas", "/api/personas", "/api/activosFijos","/swagger-ui.html","/swagger-ui/","/swagger-ui")
 				.permitAll()
-				.anyRequest().authenticated().and().cors().configurationSource(corsConfigurationSource());
+				.antMatchers("api/**").authenticated().and().cors().configurationSource(corsConfigurationSource());
 	}
 
 	/* Configuracion del cors */

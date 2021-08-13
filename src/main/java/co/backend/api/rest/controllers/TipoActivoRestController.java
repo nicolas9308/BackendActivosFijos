@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import co.backend.api.rest.models.entity.TipoActivo;
 import co.backend.api.rest.models.service.ITipoActivoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Clase java de servicios RESTful para tabla de tipos de activos fijos<br>
@@ -38,6 +40,7 @@ import co.backend.api.rest.models.service.ITipoActivoService;
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")
+@Api(value = "Clase con todos los servicios necesarios para la tabla de tipo activo")
 public class TipoActivoRestController {
 
 	@Autowired
@@ -55,6 +58,7 @@ public class TipoActivoRestController {
 	 */
 	@Secured({ "ROLE_ADMIN" })
 	@DeleteMapping("/tiposActivosFijos/{id}")
+	@ApiOperation(value = "Método de borrado para activos fijos")
 	public ResponseEntity<?> delete(@PathVariable Long id) throws Exception {
 		Map<String, Object> response = new HashMap<>();
 
@@ -101,6 +105,7 @@ public class TipoActivoRestController {
 	 */
 	@Secured({ "ROLE_ADMIN" })
 	@PutMapping("/tiposActivosFijos/{id}")
+	@ApiOperation(value = "Método de actualización para tipos de activos, actualizamos datos de auditoria estado, fecha de baja y serial")
 	public ResponseEntity<?> update(@Validated @RequestBody TipoActivo tipoActivo, BindingResult result,
 			@PathVariable Long id) throws Exception {
 
@@ -183,6 +188,7 @@ public class TipoActivoRestController {
 	 */
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@PostMapping("/tiposActivosFijos")
+	@ApiOperation(value = "Método de creación para tipo de activo fijo")
 	public ResponseEntity<?> create(@Validated @RequestBody TipoActivo tipoActivo, BindingResult result)
 			throws Exception {
 

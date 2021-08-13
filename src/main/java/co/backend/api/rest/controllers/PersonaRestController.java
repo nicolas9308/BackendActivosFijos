@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import co.backend.api.rest.models.entity.Persona;
 import co.backend.api.rest.models.service.IPersonaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Clase java de servicios RESTful para tabla de personas<br>
@@ -27,6 +29,7 @@ import co.backend.api.rest.models.service.IPersonaService;
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")
+@Api(value = "Clase con todos los servicios necesarios para la tabla de persona")
 public class PersonaRestController {
 
 	@Autowired
@@ -42,6 +45,7 @@ public class PersonaRestController {
 	 * @throws Exception 
 	 */
 	@GetMapping("/personas")
+	@ApiOperation(value = "Método de obtencién de todas las personas")
 	public ResponseEntity<?> getAll() throws Exception {
 		Map<String, Object> response = new HashMap<>();
 		List<Persona> listaPersonas = null;
