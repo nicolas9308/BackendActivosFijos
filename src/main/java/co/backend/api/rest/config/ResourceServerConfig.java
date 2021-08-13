@@ -1,4 +1,4 @@
-package co.backend.api.rest.auth;
+package co.backend.api.rest.config;
 
 import java.util.Arrays;
 

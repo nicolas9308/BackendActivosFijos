@@ -1,4 +1,4 @@
-package co.backend.api.rest.auth;
+package co.backend.api.rest.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

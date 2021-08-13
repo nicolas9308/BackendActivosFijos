@@ -1,4 +1,4 @@
-package co.backend.api.rest.auth;
+package co.backend.api.rest.config;
 
 /**
  * Clase de almacenamiento llaves de encriptación
